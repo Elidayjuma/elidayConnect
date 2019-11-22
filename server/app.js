@@ -8,6 +8,7 @@ const expressValidator = require("express-validator");
 const passport = require("passport");
 const helmet = require("helmet");
 const compression = require("compression");
+const cors = require('cors');
 
 /* Loads all variables from .env file to "process.env" */
 require("dotenv").config();
@@ -50,6 +51,8 @@ app.prepare().then(() => {
     /* Compression gives us gzip compression */
     server.use(compression());
   }
+
+  server.use(cors());
 
   /* Body Parser built-in to Express as of version 4.16 */
   server.use(express.json());
